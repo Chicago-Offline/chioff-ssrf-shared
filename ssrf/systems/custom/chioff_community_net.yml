@@ -1,0 +1,377 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Chicago-Offline/ssrf-lite/main/ssrf/_schema/ssrf-lite-0.5.3.schema.json
+# SSRF-Lite (SHARED overlay): Chicago Offline community net — GMRS/MURS
+#
+# Portable community-coordination channels for the Chicago Offline group.
+# Not site-bound: no location is set, so downstream generators always include
+# these regardless of search location.
+#
+# Tones:
+#   - ChiO GMRS simplex + MURS toned set: DCS 152
+#   - ChiO REPEATER: DCS 023 (retained -- the repeater's existing on-air
+#     configuration; changing it would require reprogramming the repeater)
+#   - MURS 1-5 (untoned): NO tone, carrier squelch. These are the published
+#     Part 95J bandplan frequencies and are deliberately left open so any
+#     MURS radio can monitor and use them. Do not add a tone to these.
+#
+# DCS polarity: SSRF-Lite 0.5.3 has no polarity field, so N (normal) cannot
+# be expressed here. N is the universal CPS default and is what is intended.
+# See Chicago-Offline/ssrf-lite#7.
+#
+# All ids prefixed `chio_` so downstream generators can distinguish shared
+# community records from the official library and from personal overlays.
+$schema: "https://raw.githubusercontent.com/Chicago-Offline/ssrf-lite/main/ssrf/_schema/ssrf-lite-0.5.3.schema.json"
+ssrf_lite_version: "0.5.3"
+ssrf_lite:
+  sources:
+    - name: "Chicago Offline community net (shared)"
+      url: "https://chicagooffline.com/"
+      accessed: "2026-08-06"
+
+organizations:
+  - id: org_chio
+    name: "Chicago Offline"
+
+# No location: portable GMRS/MURS channels carried anywhere, not bound to a
+# fixed site.
+stations:
+  - id: stn_chio_gmrs
+    organization_id: org_chio
+    service: "gmrs"
+  - id: stn_chio_murs
+    organization_id: org_chio
+    service: "murs"
+
+antennas:
+  - id: ant_chio_gmrs
+    station_id: stn_chio_gmrs
+    name: "ChiOff GMRS handheld/mobile"
+  - id: ant_chio_murs
+    station_id: stn_chio_murs
+    name: "ChiOff MURS handheld"
+
+rf_chains:
+  # ── GMRS simplex (DCS 152) ──────────────────────────────────────────
+  # ChiO ALL — GMRS 16 simplex, primary all-hands.
+  - id: chain_chio_all
+    station_id: stn_chio_gmrs
+    antenna_id: ant_chio_gmrs
+    rx:
+      freq_mhz: 462.575
+    tx:
+      freq_mhz: 462.575
+      emission: "11K2F3E"
+    mode:
+      type: "FM"
+      dcs_tx_code: "152"
+      dcs_rx_code: "152"
+  # ChiO TEAM 1 — 462.600 simplex.
+  - id: chain_chio_team1
+    station_id: stn_chio_gmrs
+    antenna_id: ant_chio_gmrs
+    rx:
+      freq_mhz: 462.600
+    tx:
+      freq_mhz: 462.600
+      emission: "11K2F3E"
+    mode:
+      type: "FM"
+      dcs_tx_code: "152"
+      dcs_rx_code: "152"
+  # ChiO TEAM 2 — 462.625 simplex.
+  - id: chain_chio_team2
+    station_id: stn_chio_gmrs
+    antenna_id: ant_chio_gmrs
+    rx:
+      freq_mhz: 462.625
+    tx:
+      freq_mhz: 462.625
+      emission: "11K2F3E"
+    mode:
+      type: "FM"
+      dcs_tx_code: "152"
+      dcs_rx_code: "152"
+  # ChiO TEAM 3 — 462.650 simplex.
+  - id: chain_chio_team3
+    station_id: stn_chio_gmrs
+    antenna_id: ant_chio_gmrs
+    rx:
+      freq_mhz: 462.650
+    tx:
+      freq_mhz: 462.650
+      emission: "11K2F3E"
+    mode:
+      type: "FM"
+      dcs_tx_code: "152"
+      dcs_rx_code: "152"
+  # ChiO ROAD — 462.675 simplex. CTCSS 141.3 is the national GMRS
+  # travel/road-assistance convention; kept as-is so ChiOff radios remain
+  # compatible with the wider convention rather than isolated behind DCS 152.
+  - id: chain_chio_road
+    station_id: stn_chio_gmrs
+    antenna_id: ant_chio_gmrs
+    rx:
+      freq_mhz: 462.675
+    tx:
+      freq_mhz: 462.675
+      emission: "11K2F3E"
+    mode:
+      type: "FM"
+      ctcss_tx_hz: 141.3
+      ctcss_rx_hz: 141.3
+  # ChiO REPEATER — GMRS 550 pair: output 462.550, input 467.550 (+5 MHz).
+  # Radio-centric: rx = repeater output, tx = repeater input.
+  # DCS 023 retained (existing repeater configuration, NOT changed to 152).
+  - id: chain_chio_repeater
+    station_id: stn_chio_gmrs
+    antenna_id: ant_chio_gmrs
+    rx:
+      freq_mhz: 467.550
+    tx:
+      freq_mhz: 462.550
+      emission: "11K2F3E"
+    mode:
+      type: "FM"
+      dcs_tx_code: "023"
+      dcs_rx_code: "023"
+
+  # ── MURS toned (DCS 152) ────────────────────────────────────────────
+  # ChiO MURS 1 — 151.820. Narrow (11K2F3E) per Part 95J.
+  - id: chain_chio_murs1
+    station_id: stn_chio_murs
+    antenna_id: ant_chio_murs
+    rx:
+      freq_mhz: 151.820
+    tx:
+      freq_mhz: 151.820
+      emission: "11K2F3E"
+    mode:
+      type: "FM"
+      dcs_tx_code: "152"
+      dcs_rx_code: "152"
+  # ChiO MURS 2 — 151.880.
+  - id: chain_chio_murs2
+    station_id: stn_chio_murs
+    antenna_id: ant_chio_murs
+    rx:
+      freq_mhz: 151.880
+    tx:
+      freq_mhz: 151.880
+      emission: "11K2F3E"
+    mode:
+      type: "FM"
+      dcs_tx_code: "152"
+      dcs_rx_code: "152"
+  # ChiO MURS 3 — 151.940.
+  - id: chain_chio_murs3
+    station_id: stn_chio_murs
+    antenna_id: ant_chio_murs
+    rx:
+      freq_mhz: 151.940
+    tx:
+      freq_mhz: 151.940
+      emission: "11K2F3E"
+    mode:
+      type: "FM"
+      dcs_tx_code: "152"
+      dcs_rx_code: "152"
+  # ChiO MURS 4 — 154.570 ("blue dot"). Wide (20K0F3E) permitted on the
+  # two 154 MHz channels under Part 95J.
+  - id: chain_chio_murs4
+    station_id: stn_chio_murs
+    antenna_id: ant_chio_murs
+    rx:
+      freq_mhz: 154.570
+    tx:
+      freq_mhz: 154.570
+      emission: "20K0F3E"
+    mode:
+      type: "FM"
+      dcs_tx_code: "152"
+      dcs_rx_code: "152"
+  # ChiO MURS 5 — 154.600 ("green dot"). Wide permitted.
+  - id: chain_chio_murs5
+    station_id: stn_chio_murs
+    antenna_id: ant_chio_murs
+    rx:
+      freq_mhz: 154.600
+    tx:
+      freq_mhz: 154.600
+      emission: "20K0F3E"
+    mode:
+      type: "FM"
+      dcs_tx_code: "152"
+      dcs_rx_code: "152"
+
+  # ── MURS untoned (carrier squelch — DO NOT add tones) ───────────────
+  # Published Part 95J bandplan, left open for interoperability and
+  # monitoring. Same frequencies as the toned set above; the absence of a
+  # tone is the entire point.
+  - id: chain_chio_murs1_open
+    station_id: stn_chio_murs
+    antenna_id: ant_chio_murs
+    rx:
+      freq_mhz: 151.820
+    tx:
+      freq_mhz: 151.820
+      emission: "11K2F3E"
+    mode:
+      type: "FM"
+  - id: chain_chio_murs2_open
+    station_id: stn_chio_murs
+    antenna_id: ant_chio_murs
+    rx:
+      freq_mhz: 151.880
+    tx:
+      freq_mhz: 151.880
+      emission: "11K2F3E"
+    mode:
+      type: "FM"
+  - id: chain_chio_murs3_open
+    station_id: stn_chio_murs
+    antenna_id: ant_chio_murs
+    rx:
+      freq_mhz: 151.940
+    tx:
+      freq_mhz: 151.940
+      emission: "11K2F3E"
+    mode:
+      type: "FM"
+  - id: chain_chio_murs4_open
+    station_id: stn_chio_murs
+    antenna_id: ant_chio_murs
+    rx:
+      freq_mhz: 154.570
+    tx:
+      freq_mhz: 154.570
+      emission: "20K0F3E"
+    mode:
+      type: "FM"
+  - id: chain_chio_murs5_open
+    station_id: stn_chio_murs
+    antenna_id: ant_chio_murs
+    rx:
+      freq_mhz: 154.600
+    tx:
+      freq_mhz: 154.600
+      emission: "20K0F3E"
+    mode:
+      type: "FM"
+
+assignments:
+  # ── GMRS ──
+  - id: asg_chio_all
+    rf_chain_id: chain_chio_all
+    channel_name: "ChiO ALL"
+    usage: "simplex"
+    service: "gmrs"
+  - id: asg_chio_team1
+    rf_chain_id: chain_chio_team1
+    channel_name: "ChiO TEAM 1"
+    usage: "simplex"
+    service: "gmrs"
+  - id: asg_chio_team2
+    rf_chain_id: chain_chio_team2
+    channel_name: "ChiO TEAM 2"
+    usage: "simplex"
+    service: "gmrs"
+  - id: asg_chio_team3
+    rf_chain_id: chain_chio_team3
+    channel_name: "ChiO TEAM 3"
+    usage: "simplex"
+    service: "gmrs"
+  - id: asg_chio_road
+    rf_chain_id: chain_chio_road
+    channel_name: "ChiO ROAD"
+    usage: "simplex"
+    service: "gmrs"
+  - id: asg_chio_repeater
+    rf_chain_id: chain_chio_repeater
+    channel_name: "ChiO REPEATER"
+    usage: "repeater"
+    service: "gmrs"
+  # ── MURS toned ──
+  - id: asg_chio_murs1
+    rf_chain_id: chain_chio_murs1
+    channel_name: "ChiO MURS 1"
+    usage: "simplex"
+    service: "murs"
+  - id: asg_chio_murs2
+    rf_chain_id: chain_chio_murs2
+    channel_name: "ChiO MURS 2"
+    usage: "simplex"
+    service: "murs"
+  - id: asg_chio_murs3
+    rf_chain_id: chain_chio_murs3
+    channel_name: "ChiO MURS 3"
+    usage: "simplex"
+    service: "murs"
+  - id: asg_chio_murs4
+    rf_chain_id: chain_chio_murs4
+    channel_name: "ChiO MURS 4"
+    usage: "simplex"
+    service: "murs"
+  - id: asg_chio_murs5
+    rf_chain_id: chain_chio_murs5
+    channel_name: "ChiO MURS 5"
+    usage: "simplex"
+    service: "murs"
+  # ── MURS untoned (names deliberately stay "MURS n") ──
+  - id: asg_chio_murs1_open
+    rf_chain_id: chain_chio_murs1_open
+    channel_name: "MURS 1"
+    usage: "simplex"
+    service: "murs"
+    notes: "Untoned carrier squelch. Open Part 95J channel - do not add a tone."
+  - id: asg_chio_murs2_open
+    rf_chain_id: chain_chio_murs2_open
+    channel_name: "MURS 2"
+    usage: "simplex"
+    service: "murs"
+    notes: "Untoned carrier squelch. Open Part 95J channel - do not add a tone."
+  - id: asg_chio_murs3_open
+    rf_chain_id: chain_chio_murs3_open
+    channel_name: "MURS 3"
+    usage: "simplex"
+    service: "murs"
+    notes: "Untoned carrier squelch. Open Part 95J channel - do not add a tone."
+  - id: asg_chio_murs4_open
+    rf_chain_id: chain_chio_murs4_open
+    channel_name: "MURS 4"
+    usage: "simplex"
+    service: "murs"
+    notes: "Untoned carrier squelch. Open Part 95J channel - do not add a tone."
+  - id: asg_chio_murs5_open
+    rf_chain_id: chain_chio_murs5_open
+    channel_name: "MURS 5"
+    usage: "simplex"
+    service: "murs"
+    notes: "Untoned carrier squelch. Open Part 95J channel - do not add a tone."
+
+comments:
+  - text: |
+      SHARED overlay for the Chicago Offline community net.
+
+      Primary all-hands channel is ChiO ALL (462.575, DCS 152). The toned
+      ChiOff set uses DCS 152 throughout, chosen to avoid collision with
+      common default codes (023/025/026/031) that other Chicagoland GMRS
+      users tend to land on.
+
+      Two deliberate exceptions to DCS 152:
+        - ChiO REPEATER keeps DCS 023, matching the repeater's existing
+          on-air configuration.
+        - ChiO ROAD keeps CTCSS 141.3, the national GMRS travel/road
+          convention, so ChiOff radios stay compatible with non-ChiOff
+          traffic on that channel.
+
+      MURS appears twice on purpose. "ChiO MURS 1-5" carry DCS 152 for
+      group traffic; "MURS 1-5" are the same frequencies with NO tone
+      (carrier squelch) so any MURS radio can monitor and join. The tone
+      configuration is the only difference, which is why the names must
+      stay distinct.
+
+      DCS polarity is not expressible in SSRF-Lite 0.5.3 (no polarity
+      field). Normal (N) is intended and is the universal CPS default.
+      Tracking upstream: Chicago-Offline/ssrf-lite#7.
+
+      Channels are location-less (portable) so they always import
+      regardless of search location. All ids prefixed `chio_`.
