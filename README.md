@@ -79,14 +79,17 @@ The 154 MHz channels use `20K0F3E` (wide), which Part 95J permits there; the
 on, and to stay clear of codes already in use in ChiOff members' personal
 overlays.
 
-### Known limitation: DCS polarity
+### DCS polarity
 
-SSRF-Lite `0.5.3` has `dcs_tx_code` / `dcs_rx_code` but **no polarity
-field**, so `N` (normal) versus `I` (inverted) cannot be expressed in this
-data. Normal is intended throughout and is the universal CPS default, so
-radios program correctly today — but the assumption is unstated in the file.
+Every toned channel is **normal (`N`)** polarity, stated explicitly via
+`dcs_tx_polarity` / `dcs_rx_polarity`.
 
-Tracked upstream: [`Chicago-Offline/ssrf-lite#7`](https://github.com/Chicago-Offline/ssrf-lite/issues/7).
+These fields were added upstream in
+[`ssrf-lite#8`](https://github.com/Chicago-Offline/ssrf-lite/pull/8),
+resolving [`ssrf-lite#7`](https://github.com/Chicago-Offline/ssrf-lite/issues/7),
+which this overlay originally had to work around. `N` is the schema default,
+so stating it changes nothing functionally — but it puts the intent in the
+data instead of leaving it to be assumed.
 
 ## Conventions
 

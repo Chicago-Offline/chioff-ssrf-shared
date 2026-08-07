@@ -13,9 +13,11 @@
 #     Part 95J bandplan frequencies and are deliberately left open so any
 #     MURS radio can monitor and use them. Do not add a tone to these.
 #
-# DCS polarity: SSRF-Lite 0.5.3 has no polarity field, so N (normal) cannot
-# be expressed here. N is the universal CPS default and is what is intended.
-# See Chicago-Offline/ssrf-lite#7.
+# DCS polarity: normal (N) throughout, stated explicitly via
+# dcs_tx_polarity / dcs_rx_polarity (added upstream in ssrf-lite#8,
+# resolving ssrf-lite#7). N is also the schema default, so these are
+# belt-and-braces -- but stating them means the intent is in the data
+# rather than assumed by whoever reads it.
 #
 # All ids prefixed `chio_` so downstream generators can distinguish shared
 # community records from the official library and from personal overlays.
@@ -63,7 +65,9 @@ rf_chains:
     mode:
       type: "FM"
       dcs_tx_code: "152"
+      dcs_tx_polarity: "N"
       dcs_rx_code: "152"
+      dcs_rx_polarity: "N"
   # ChiO TEAM 1 — 462.600 simplex.
   - id: chain_chio_team1
     station_id: stn_chio_gmrs
@@ -76,7 +80,9 @@ rf_chains:
     mode:
       type: "FM"
       dcs_tx_code: "152"
+      dcs_tx_polarity: "N"
       dcs_rx_code: "152"
+      dcs_rx_polarity: "N"
   # ChiO TEAM 2 — 462.625 simplex.
   - id: chain_chio_team2
     station_id: stn_chio_gmrs
@@ -89,7 +95,9 @@ rf_chains:
     mode:
       type: "FM"
       dcs_tx_code: "152"
+      dcs_tx_polarity: "N"
       dcs_rx_code: "152"
+      dcs_rx_polarity: "N"
   # ChiO TEAM 3 — 462.650 simplex.
   - id: chain_chio_team3
     station_id: stn_chio_gmrs
@@ -102,7 +110,9 @@ rf_chains:
     mode:
       type: "FM"
       dcs_tx_code: "152"
+      dcs_tx_polarity: "N"
       dcs_rx_code: "152"
+      dcs_rx_polarity: "N"
   # ChiO ROAD — 462.675 simplex. CTCSS 141.3 is the national GMRS
   # travel/road-assistance convention; kept as-is so ChiOff radios remain
   # compatible with the wider convention rather than isolated behind DCS 152.
@@ -132,7 +142,9 @@ rf_chains:
     mode:
       type: "FM"
       dcs_tx_code: "023"
+      dcs_tx_polarity: "N"
       dcs_rx_code: "023"
+      dcs_rx_polarity: "N"
 
   # ── MURS toned (DCS 152) ────────────────────────────────────────────
   # ChiO MURS 1 — 151.820. Narrow (11K2F3E) per Part 95J.
@@ -147,7 +159,9 @@ rf_chains:
     mode:
       type: "FM"
       dcs_tx_code: "152"
+      dcs_tx_polarity: "N"
       dcs_rx_code: "152"
+      dcs_rx_polarity: "N"
   # ChiO MURS 2 — 151.880.
   - id: chain_chio_murs2
     station_id: stn_chio_murs
@@ -160,7 +174,9 @@ rf_chains:
     mode:
       type: "FM"
       dcs_tx_code: "152"
+      dcs_tx_polarity: "N"
       dcs_rx_code: "152"
+      dcs_rx_polarity: "N"
   # ChiO MURS 3 — 151.940.
   - id: chain_chio_murs3
     station_id: stn_chio_murs
@@ -173,7 +189,9 @@ rf_chains:
     mode:
       type: "FM"
       dcs_tx_code: "152"
+      dcs_tx_polarity: "N"
       dcs_rx_code: "152"
+      dcs_rx_polarity: "N"
   # ChiO MURS 4 — 154.570 ("blue dot"). Wide (20K0F3E) permitted on the
   # two 154 MHz channels under Part 95J.
   - id: chain_chio_murs4
@@ -187,7 +205,9 @@ rf_chains:
     mode:
       type: "FM"
       dcs_tx_code: "152"
+      dcs_tx_polarity: "N"
       dcs_rx_code: "152"
+      dcs_rx_polarity: "N"
   # ChiO MURS 5 — 154.600 ("green dot"). Wide permitted.
   - id: chain_chio_murs5
     station_id: stn_chio_murs
@@ -200,7 +220,9 @@ rf_chains:
     mode:
       type: "FM"
       dcs_tx_code: "152"
+      dcs_tx_polarity: "N"
       dcs_rx_code: "152"
+      dcs_rx_polarity: "N"
 
   # ── MURS untoned (carrier squelch — DO NOT add tones) ───────────────
   # Published Part 95J bandplan, left open for interoperability and
@@ -369,9 +391,9 @@ comments:
       configuration is the only difference, which is why the names must
       stay distinct.
 
-      DCS polarity is not expressible in SSRF-Lite 0.5.3 (no polarity
-      field). Normal (N) is intended and is the universal CPS default.
-      Tracking upstream: Chicago-Offline/ssrf-lite#7.
+      DCS polarity is normal (N) on every toned channel, stated
+      explicitly rather than left to the schema default. The polarity
+      fields were added upstream in Chicago-Offline/ssrf-lite#8.
 
       Channels are location-less (portable) so they always import
       regardless of search location. All ids prefixed `chio_`.
