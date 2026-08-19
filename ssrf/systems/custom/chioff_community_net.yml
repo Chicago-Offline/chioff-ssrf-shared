@@ -6,9 +6,10 @@
 # these regardless of search location.
 #
 # Tones:
-#   - ChiO GMRS simplex + MURS toned set: DCS 152
-#   - ChiO REPEATER: DCS 023 (retained -- the repeater's existing on-air
-#     configuration; changing it would require reprogramming the repeater)
+#   - ChiO GMRS simplex + MURS toned set: DCS 023
+#     (changed from DCS 152 on 2026-08-18; the whole toned set is now 023)
+#   - ChiO REPEATER: DCS 023 (unchanged -- the repeater's existing on-air
+#     configuration already used 023, so it now matches the simplex set)
 #   - MURS 1-5 (untoned): NO tone, carrier squelch. These are the published
 #     Part 95J bandplan frequencies and are deliberately left open so any
 #     MURS radio can monitor and use them. Do not add a tone to these.
@@ -52,7 +53,7 @@ antennas:
     name: "ChiOff MURS handheld"
 
 rf_chains:
-  # ── GMRS simplex (DCS 152) ──────────────────────────────────────────
+  # ── GMRS simplex (DCS 023) ──────────────────────────────────────────
   # ChiO ALL — GMRS 16 simplex, primary all-hands.
   - id: chain_chio_all
     station_id: stn_chio_gmrs
@@ -64,9 +65,9 @@ rf_chains:
       emission: "11K2F3E"
     mode:
       type: "FM"
-      dcs_tx_code: "152"
+      dcs_tx_code: "023"
       dcs_tx_polarity: "N"
-      dcs_rx_code: "152"
+      dcs_rx_code: "023"
       dcs_rx_polarity: "N"
   # ChiO TEAM 1 — 462.600 simplex.
   - id: chain_chio_team1
@@ -79,9 +80,9 @@ rf_chains:
       emission: "11K2F3E"
     mode:
       type: "FM"
-      dcs_tx_code: "152"
+      dcs_tx_code: "023"
       dcs_tx_polarity: "N"
-      dcs_rx_code: "152"
+      dcs_rx_code: "023"
       dcs_rx_polarity: "N"
   # ChiO TEAM 2 — 462.625 simplex.
   - id: chain_chio_team2
@@ -94,9 +95,9 @@ rf_chains:
       emission: "11K2F3E"
     mode:
       type: "FM"
-      dcs_tx_code: "152"
+      dcs_tx_code: "023"
       dcs_tx_polarity: "N"
-      dcs_rx_code: "152"
+      dcs_rx_code: "023"
       dcs_rx_polarity: "N"
   # ChiO TEAM 3 — 462.650 simplex.
   - id: chain_chio_team3
@@ -109,13 +110,13 @@ rf_chains:
       emission: "11K2F3E"
     mode:
       type: "FM"
-      dcs_tx_code: "152"
+      dcs_tx_code: "023"
       dcs_tx_polarity: "N"
-      dcs_rx_code: "152"
+      dcs_rx_code: "023"
       dcs_rx_polarity: "N"
   # ChiO ROAD — 462.675 simplex. CTCSS 141.3 is the national GMRS
   # travel/road-assistance convention; kept as-is so ChiOff radios remain
-  # compatible with the wider convention rather than isolated behind DCS 152.
+  # compatible with the wider convention rather than isolated behind DCS 023.
   - id: chain_chio_road
     station_id: stn_chio_gmrs
     antenna_id: ant_chio_gmrs
@@ -130,7 +131,8 @@ rf_chains:
       ctcss_rx_hz: 141.3
   # ChiO REPEATER — GMRS 550 pair: output 462.550, input 467.550 (+5 MHz).
   # Radio-centric: rx = repeater output, tx = repeater input.
-  # DCS 023 retained (existing repeater configuration, NOT changed to 152).
+  # DCS 023 (existing repeater configuration, unchanged -- the simplex set
+  # was moved to 023 to match it rather than the other way around).
   - id: chain_chio_repeater
     station_id: stn_chio_gmrs
     antenna_id: ant_chio_gmrs
@@ -146,7 +148,7 @@ rf_chains:
       dcs_rx_code: "023"
       dcs_rx_polarity: "N"
 
-  # ── MURS toned (DCS 152) ────────────────────────────────────────────
+  # ── MURS toned (DCS 023) ────────────────────────────────────────────
   # ChiO MURS 1 — 151.820. Narrow (11K2F3E) per Part 95J.
   - id: chain_chio_murs1
     station_id: stn_chio_murs
@@ -158,9 +160,9 @@ rf_chains:
       emission: "11K2F3E"
     mode:
       type: "FM"
-      dcs_tx_code: "152"
+      dcs_tx_code: "023"
       dcs_tx_polarity: "N"
-      dcs_rx_code: "152"
+      dcs_rx_code: "023"
       dcs_rx_polarity: "N"
   # ChiO MURS 2 — 151.880.
   - id: chain_chio_murs2
@@ -173,9 +175,9 @@ rf_chains:
       emission: "11K2F3E"
     mode:
       type: "FM"
-      dcs_tx_code: "152"
+      dcs_tx_code: "023"
       dcs_tx_polarity: "N"
-      dcs_rx_code: "152"
+      dcs_rx_code: "023"
       dcs_rx_polarity: "N"
   # ChiO MURS 3 — 151.940.
   - id: chain_chio_murs3
@@ -188,9 +190,9 @@ rf_chains:
       emission: "11K2F3E"
     mode:
       type: "FM"
-      dcs_tx_code: "152"
+      dcs_tx_code: "023"
       dcs_tx_polarity: "N"
-      dcs_rx_code: "152"
+      dcs_rx_code: "023"
       dcs_rx_polarity: "N"
   # ChiO MURS 4 — 154.570 ("blue dot"). Wide (20K0F3E) permitted on the
   # two 154 MHz channels under Part 95J.
@@ -204,9 +206,9 @@ rf_chains:
       emission: "20K0F3E"
     mode:
       type: "FM"
-      dcs_tx_code: "152"
+      dcs_tx_code: "023"
       dcs_tx_polarity: "N"
-      dcs_rx_code: "152"
+      dcs_rx_code: "023"
       dcs_rx_polarity: "N"
   # ChiO MURS 5 — 154.600 ("green dot"). Wide permitted.
   - id: chain_chio_murs5
@@ -219,9 +221,9 @@ rf_chains:
       emission: "20K0F3E"
     mode:
       type: "FM"
-      dcs_tx_code: "152"
+      dcs_tx_code: "023"
       dcs_tx_polarity: "N"
-      dcs_rx_code: "152"
+      dcs_rx_code: "023"
       dcs_rx_polarity: "N"
 
   # ── MURS untoned (carrier squelch — DO NOT add tones) ───────────────
