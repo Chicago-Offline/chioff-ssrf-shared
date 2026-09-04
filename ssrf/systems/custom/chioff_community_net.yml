@@ -148,6 +148,38 @@ rf_chains:
       dcs_rx_code: "023"
       dcs_rx_polarity: "N"
 
+  # ── DMR family channels (emergency/off-grid; not routine GMRS) ─────
+  - id: chain_chio_dmr_all
+    station_id: stn_chio_gmrs
+    antenna_id: ant_chio_gmrs
+    rx: {freq_mhz: 462.575}
+    tx: {freq_mhz: 462.575, emission: "7K60FXE"}
+    mode: {type: "DMR", color_code: 1, timeslots: [1]}
+  - id: chain_chio_dmr_team1
+    station_id: stn_chio_gmrs
+    antenna_id: ant_chio_gmrs
+    rx: {freq_mhz: 462.600}
+    tx: {freq_mhz: 462.600, emission: "7K60FXE"}
+    mode: {type: "DMR", color_code: 1, timeslots: [1]}
+  - id: chain_chio_dmr_team2
+    station_id: stn_chio_gmrs
+    antenna_id: ant_chio_gmrs
+    rx: {freq_mhz: 462.625}
+    tx: {freq_mhz: 462.625, emission: "7K60FXE"}
+    mode: {type: "DMR", color_code: 1, timeslots: [1]}
+  - id: chain_chio_dmr_team3
+    station_id: stn_chio_gmrs
+    antenna_id: ant_chio_gmrs
+    rx: {freq_mhz: 462.650}
+    tx: {freq_mhz: 462.650, emission: "7K60FXE"}
+    mode: {type: "DMR", color_code: 1, timeslots: [1]}
+  - id: chain_chio_dmr_road
+    station_id: stn_chio_gmrs
+    antenna_id: ant_chio_gmrs
+    rx: {freq_mhz: 462.675}
+    tx: {freq_mhz: 462.675, emission: "7K60FXE"}
+    mode: {type: "DMR", color_code: 1, timeslots: [1]}
+
   # ── MURS toned (DCS 023) ────────────────────────────────────────────
   # ChiO MURS 1 — 151.820. Narrow (11K2F3E) per Part 95J.
   - id: chain_chio_murs1
@@ -312,6 +344,32 @@ assignments:
     rf_chain_id: chain_chio_repeater
     channel_name: "ChiO REPEATER"
     usage: "repeater"
+    service: "gmrs"
+  # ── DMR family channels ──
+  - id: asg_chio_dmr_all
+    rf_chain_id: chain_chio_dmr_all
+    channel_name: "ChiO DMR ALL"
+    usage: "digital-simplex"
+    service: "gmrs"
+  - id: asg_chio_dmr_team1
+    rf_chain_id: chain_chio_dmr_team1
+    channel_name: "ChiO DMR TEAM 1"
+    usage: "digital-simplex"
+    service: "gmrs"
+  - id: asg_chio_dmr_team2
+    rf_chain_id: chain_chio_dmr_team2
+    channel_name: "ChiO DMR TEAM 2"
+    usage: "digital-simplex"
+    service: "gmrs"
+  - id: asg_chio_dmr_team3
+    rf_chain_id: chain_chio_dmr_team3
+    channel_name: "ChiO DMR TEAM 3"
+    usage: "digital-simplex"
+    service: "gmrs"
+  - id: asg_chio_dmr_road
+    rf_chain_id: chain_chio_dmr_road
+    channel_name: "ChiO DMR ROAD"
+    usage: "digital-simplex"
     service: "gmrs"
   # ── MURS toned ──
   - id: asg_chio_murs1

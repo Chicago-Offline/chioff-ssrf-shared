@@ -42,6 +42,18 @@ private per-operator overlay, not here.
 
 `ChiO ALL` is the primary all-hands channel.
 
+### DMR family channels
+
+The shared RF set also defines five DMR family channels using the same
+462.575-462.675 MHz frequencies as the family simplex channels. They use
+color code 1 and timeslot 1, and are named `ChiO DMR ALL`, `ChiO DMR TEAM 1`,
+`ChiO DMR TEAM 2`, `ChiO DMR TEAM 3`, and `ChiO DMR ROAD`.
+
+These records describe shared RF settings only. Radio IDs, contacts, and RX
+groups remain per-operator configuration and do not belong in this repository.
+The DMR set is for emergency/off-grid use and is not authorized for routine
+GMRS operation.
+
 Two deliberate exceptions to DCS 152:
 
 - **ChiO REPEATER keeps DCS 023** — this matches the repeater's existing
