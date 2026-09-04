@@ -33,10 +33,10 @@ private per-operator overlay, not here.
 
 | Channel | Freq (MHz) | Tone |
 |---|---|---|
-| ChiO ALL | 462.575 simplex | DCS 152 |
-| ChiO TEAM 1 | 462.600 simplex | DCS 152 |
-| ChiO TEAM 2 | 462.625 simplex | DCS 152 |
-| ChiO TEAM 3 | 462.650 simplex | DCS 152 |
+| ChiO ALL | 462.575 simplex | DCS 023 |
+| ChiO TEAM 1 | 462.600 simplex | DCS 023 |
+| ChiO TEAM 2 | 462.625 simplex | DCS 023 |
+| ChiO TEAM 3 | 462.650 simplex | DCS 023 |
 | ChiO ROAD | 462.675 simplex | CTCSS 141.3 |
 | ChiO REPEATER | 462.550 out / 467.550 in | DCS 023 |
 
@@ -54,13 +54,9 @@ groups remain per-operator configuration and do not belong in this repository.
 The DMR set is for emergency/off-grid use and is not authorized for routine
 GMRS operation.
 
-Two deliberate exceptions to DCS 152:
-
-- **ChiO REPEATER keeps DCS 023** — this matches the repeater's existing
-  on-air configuration. Changing it in data would not change the hardware.
-- **ChiO ROAD keeps CTCSS 141.3** — the national GMRS travel/road-assistance
-  convention. Putting DCS 152 here would isolate ChiOff radios from
-  everyone else using that channel as intended.
+ChiO ROAD retains CTCSS 141.3 for compatibility with the wider GMRS
+travel/road-assistance convention. ChiO REPEATER retains DCS 023 to match its
+existing on-air configuration.
 
 ### MURS
 
@@ -68,8 +64,8 @@ MURS is listed **twice on purpose**, and the two sets are not interchangeable.
 
 | Channel | Freq (MHz) | Tone |
 |---|---|---|
-| ChiO MURS 1–3 | 151.820 / 151.880 / 151.940 | DCS 152 |
-| ChiO MURS 4–5 | 154.570 / 154.600 | DCS 152 |
+| ChiO MURS 1–3 | 151.820 / 151.880 / 151.940 | DCS 023 |
+| ChiO MURS 4–5 | 154.570 / 154.600 | DCS 023 |
 | MURS 1–3 | 151.820 / 151.880 / 151.940 | **none** (carrier squelch) |
 | MURS 4–5 | 154.570 / 154.600 | **none** (carrier squelch) |
 
@@ -86,10 +82,8 @@ The 154 MHz channels use `20K0F3E` (wide), which Part 95J permits there; the
 
 ## Tone choice
 
-`DCS 152` was picked to avoid collision with the common default codes
-(`023`, `025`, `026`, `031`) that other Chicagoland GMRS users tend to land
-on, and to stay clear of codes already in use in ChiOff members' personal
-overlays.
+The toned ChiOff channels use DCS 023, matching the current shared community
+net configuration.
 
 ### DCS polarity
 

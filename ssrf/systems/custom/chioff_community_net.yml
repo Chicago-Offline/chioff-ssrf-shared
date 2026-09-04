@@ -137,9 +137,9 @@ rf_chains:
     station_id: stn_chio_gmrs
     antenna_id: ant_chio_gmrs
     rx:
-      freq_mhz: 467.550
-    tx:
       freq_mhz: 462.550
+    tx:
+      freq_mhz: 467.550
       emission: "11K2F3E"
     mode:
       type: "FM"
@@ -433,19 +433,15 @@ comments:
   - text: |
       SHARED overlay for the Chicago Offline community net.
 
-      Primary all-hands channel is ChiO ALL (462.575, DCS 152). The toned
-      ChiOff set uses DCS 152 throughout, chosen to avoid collision with
-      common default codes (023/025/026/031) that other Chicagoland GMRS
-      users tend to land on.
+      Primary all-hands channel is ChiO ALL (462.575, DCS 023). The toned
+      ChiOff set uses DCS 023 throughout, matching the current shared
+      community-net configuration.
 
-      Two deliberate exceptions to DCS 152:
-        - ChiO REPEATER keeps DCS 023, matching the repeater's existing
-          on-air configuration.
-        - ChiO ROAD keeps CTCSS 141.3, the national GMRS travel/road
-          convention, so ChiOff radios stay compatible with non-ChiOff
-          traffic on that channel.
+      ChiO ROAD keeps CTCSS 141.3 for the national GMRS travel/road
+      convention. ChiO REPEATER keeps DCS 023 to match its existing on-air
+      configuration.
 
-      MURS appears twice on purpose. "ChiO MURS 1-5" carry DCS 152 for
+      MURS appears twice on purpose. "ChiO MURS 1-5" carry DCS 023 for
       group traffic; "MURS 1-5" are the same frequencies with NO tone
       (carrier squelch) so any MURS radio can monitor and join. The tone
       configuration is the only difference, which is why the names must
