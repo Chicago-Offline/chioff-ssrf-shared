@@ -43,6 +43,9 @@ stations:
   - id: stn_chio_murs
     organization_id: org_chio
     service: "murs"
+  - id: stn_chio_amateur
+    organization_id: org_chio
+    service: "amateur"
 
 antennas:
   - id: ant_chio_gmrs
@@ -51,6 +54,9 @@ antennas:
   - id: ant_chio_murs
     station_id: stn_chio_murs
     name: "ChiOff MURS handheld"
+  - id: ant_chio_amateur
+    station_id: stn_chio_amateur
+    name: "ChiOff amateur handheld/mobile"
 
 rf_chains:
   # ── GMRS simplex (DCS 023) ──────────────────────────────────────────
@@ -178,6 +184,38 @@ rf_chains:
     antenna_id: ant_chio_gmrs
     rx: {freq_mhz: 462.675}
     tx: {freq_mhz: 462.675, emission: "7K60FXE"}
+    mode: {type: "DMR", color_code: 1, timeslots: [1]}
+
+  # ── UHF amateur DMR simplex ─────────────────────────────────────────
+  - id: chain_chio_dmr_uhf_call
+    station_id: stn_chio_amateur
+    antenna_id: ant_chio_amateur
+    rx: {freq_mhz: 446.000}
+    tx: {freq_mhz: 446.000, emission: "7K60FXE"}
+    mode: {type: "DMR", color_code: 1, timeslots: [1]}
+  - id: chain_chio_dmr_uhf_446025
+    station_id: stn_chio_amateur
+    antenna_id: ant_chio_amateur
+    rx: {freq_mhz: 446.025}
+    tx: {freq_mhz: 446.025, emission: "7K60FXE"}
+    mode: {type: "DMR", color_code: 1, timeslots: [1]}
+  - id: chain_chio_dmr_uhf_446050
+    station_id: stn_chio_amateur
+    antenna_id: ant_chio_amateur
+    rx: {freq_mhz: 446.050}
+    tx: {freq_mhz: 446.050, emission: "7K60FXE"}
+    mode: {type: "DMR", color_code: 1, timeslots: [1]}
+  - id: chain_chio_dmr_uhf_446075
+    station_id: stn_chio_amateur
+    antenna_id: ant_chio_amateur
+    rx: {freq_mhz: 446.075}
+    tx: {freq_mhz: 446.075, emission: "7K60FXE"}
+    mode: {type: "DMR", color_code: 1, timeslots: [1]}
+  - id: chain_chio_dmr_uhf_446100
+    station_id: stn_chio_amateur
+    antenna_id: ant_chio_amateur
+    rx: {freq_mhz: 446.100}
+    tx: {freq_mhz: 446.100, emission: "7K60FXE"}
     mode: {type: "DMR", color_code: 1, timeslots: [1]}
 
   # ── MURS toned (DCS 023) ────────────────────────────────────────────
@@ -371,6 +409,32 @@ assignments:
     channel_name: "ChiO DMR ROAD"
     usage: "digital-simplex"
     service: "gmrs"
+  # ── UHF amateur DMR simplex ──
+  - id: asg_chio_dmr_uhf_call
+    rf_chain_id: chain_chio_dmr_uhf_call
+    channel_name: "DMR UHF Calling"
+    usage: "digital-simplex"
+    service: "amateur"
+  - id: asg_chio_dmr_uhf_446025
+    rf_chain_id: chain_chio_dmr_uhf_446025
+    channel_name: "DMR UHF 446.025"
+    usage: "digital-simplex"
+    service: "amateur"
+  - id: asg_chio_dmr_uhf_446050
+    rf_chain_id: chain_chio_dmr_uhf_446050
+    channel_name: "DMR UHF 446.050"
+    usage: "digital-simplex"
+    service: "amateur"
+  - id: asg_chio_dmr_uhf_446075
+    rf_chain_id: chain_chio_dmr_uhf_446075
+    channel_name: "DMR UHF 446.075"
+    usage: "digital-simplex"
+    service: "amateur"
+  - id: asg_chio_dmr_uhf_446100
+    rf_chain_id: chain_chio_dmr_uhf_446100
+    channel_name: "DMR UHF 446.100"
+    usage: "digital-simplex"
+    service: "amateur"
   # ── MURS toned ──
   - id: asg_chio_murs1
     rf_chain_id: chain_chio_murs1

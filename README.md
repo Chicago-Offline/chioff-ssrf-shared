@@ -58,6 +58,21 @@ ChiO ROAD retains CTCSS 141.3 for compatibility with the wider GMRS
 travel/road-assistance convention. ChiO REPEATER retains DCS 023 to match its
 existing on-air configuration.
 
+### UHF amateur simplex
+
+| Channel | Freq (MHz) | Mode |
+|---|---|---|
+| UHF Calling | 446.000 simplex | FM |
+| UHF 446.025 | 446.025 simplex | FM |
+| UHF 446.050 | 446.050 simplex | FM |
+| UHF 446.075 | 446.075 simplex | FM |
+| UHF 446.100 | 446.100 simplex | FM |
+
+The analog FM assignments are sourced from SSRF-Lite's U.S. amateur UHF
+simplex plan. Matching ChiOff DMR simplex channels use the same five frequencies with color code 1
+and timeslot 1. They are named `DMR UHF Calling`, `DMR UHF 446.025`,
+`DMR UHF 446.050`, `DMR UHF 446.075`, and `DMR UHF 446.100`.
+
 ### MURS
 
 MURS is listed **twice on purpose**, and the two sets are not interchangeable.
