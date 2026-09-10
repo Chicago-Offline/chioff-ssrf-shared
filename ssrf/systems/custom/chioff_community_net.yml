@@ -154,39 +154,6 @@ rf_chains:
       dcs_rx_code: "023"
       dcs_rx_polarity: "N"
 
-  # ── DMR family channels (emergency/off-grid; not routine GMRS) ─────
-  - id: chain_chio_dmr_all
-    station_id: stn_chio_gmrs
-    antenna_id: ant_chio_gmrs
-    rx: {freq_mhz: 462.575}
-    tx: {freq_mhz: 462.575, emission: "7K60FXE"}
-    mode: {type: "DMR", color_code: 1, timeslots: [1]}
-  - id: chain_chio_dmr_team1
-    station_id: stn_chio_gmrs
-    antenna_id: ant_chio_gmrs
-    rx: {freq_mhz: 462.600}
-    tx: {freq_mhz: 462.600, emission: "7K60FXE"}
-    mode: {type: "DMR", color_code: 1, timeslots: [1]}
-  - id: chain_chio_dmr_team2
-    station_id: stn_chio_gmrs
-    antenna_id: ant_chio_gmrs
-    rx: {freq_mhz: 462.625}
-    tx: {freq_mhz: 462.625, emission: "7K60FXE"}
-    mode: {type: "DMR", color_code: 1, timeslots: [1]}
-  - id: chain_chio_dmr_team3
-    station_id: stn_chio_gmrs
-    antenna_id: ant_chio_gmrs
-    rx: {freq_mhz: 462.650}
-    tx: {freq_mhz: 462.650, emission: "7K60FXE"}
-    mode: {type: "DMR", color_code: 1, timeslots: [1]}
-  - id: chain_chio_dmr_road
-    station_id: stn_chio_gmrs
-    antenna_id: ant_chio_gmrs
-    rx: {freq_mhz: 462.675}
-    tx: {freq_mhz: 462.675, emission: "7K60FXE"}
-    mode: {type: "DMR", color_code: 1, timeslots: [1]}
-
-  # ── UHF amateur DMR simplex ─────────────────────────────────────────
   - id: chain_chio_dmr_uhf_call
     station_id: stn_chio_amateur
     antenna_id: ant_chio_amateur
@@ -383,33 +350,6 @@ assignments:
     channel_name: "ChiO REPEATER"
     usage: "repeater"
     service: "gmrs"
-  # ── DMR family channels ──
-  - id: asg_chio_dmr_all
-    rf_chain_id: chain_chio_dmr_all
-    channel_name: "ChiO DMR ALL"
-    usage: "digital-simplex"
-    service: "gmrs"
-  - id: asg_chio_dmr_team1
-    rf_chain_id: chain_chio_dmr_team1
-    channel_name: "ChiO DMR TEAM 1"
-    usage: "digital-simplex"
-    service: "gmrs"
-  - id: asg_chio_dmr_team2
-    rf_chain_id: chain_chio_dmr_team2
-    channel_name: "ChiO DMR TEAM 2"
-    usage: "digital-simplex"
-    service: "gmrs"
-  - id: asg_chio_dmr_team3
-    rf_chain_id: chain_chio_dmr_team3
-    channel_name: "ChiO DMR TEAM 3"
-    usage: "digital-simplex"
-    service: "gmrs"
-  - id: asg_chio_dmr_road
-    rf_chain_id: chain_chio_dmr_road
-    channel_name: "ChiO DMR ROAD"
-    usage: "digital-simplex"
-    service: "gmrs"
-  # ── UHF amateur DMR simplex ──
   - id: asg_chio_dmr_uhf_call
     rf_chain_id: chain_chio_dmr_uhf_call
     channel_name: "DMR UHF Calling"
