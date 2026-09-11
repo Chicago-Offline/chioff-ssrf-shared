@@ -10,9 +10,6 @@
 #     (changed from DCS 152 on 2026-08-18; the whole toned set is now 023)
 #   - ChiO REPEATER: DCS 023 (unchanged -- the repeater's existing on-air
 #     configuration already used 023, so it now matches the simplex set)
-#   - MURS 1-5 (untoned): NO tone, carrier squelch. These are the published
-#     Part 95J bandplan frequencies and are deliberately left open so any
-#     MURS radio can monitor and use them. Do not add a tone to these.
 #
 # DCS polarity: normal (N) throughout, stated explicitly via
 # dcs_tx_polarity / dcs_rx_polarity (added upstream in ssrf-lite#8,
@@ -263,61 +260,6 @@ rf_chains:
       dcs_rx_code: "023"
       dcs_rx_polarity: "N"
 
-  # ── MURS untoned (carrier squelch — DO NOT add tones) ───────────────
-  # Published Part 95J bandplan, left open for interoperability and
-  # monitoring. Same frequencies as the toned set above; the absence of a
-  # tone is the entire point.
-  - id: chain_chio_murs1_open
-    station_id: stn_chio_murs
-    antenna_id: ant_chio_murs
-    rx:
-      freq_mhz: 151.820
-    tx:
-      freq_mhz: 151.820
-      emission: "11K2F3E"
-    mode:
-      type: "FM"
-  - id: chain_chio_murs2_open
-    station_id: stn_chio_murs
-    antenna_id: ant_chio_murs
-    rx:
-      freq_mhz: 151.880
-    tx:
-      freq_mhz: 151.880
-      emission: "11K2F3E"
-    mode:
-      type: "FM"
-  - id: chain_chio_murs3_open
-    station_id: stn_chio_murs
-    antenna_id: ant_chio_murs
-    rx:
-      freq_mhz: 151.940
-    tx:
-      freq_mhz: 151.940
-      emission: "11K2F3E"
-    mode:
-      type: "FM"
-  - id: chain_chio_murs4_open
-    station_id: stn_chio_murs
-    antenna_id: ant_chio_murs
-    rx:
-      freq_mhz: 154.570
-    tx:
-      freq_mhz: 154.570
-      emission: "20K0F3E"
-    mode:
-      type: "FM"
-  - id: chain_chio_murs5_open
-    station_id: stn_chio_murs
-    antenna_id: ant_chio_murs
-    rx:
-      freq_mhz: 154.600
-    tx:
-      freq_mhz: 154.600
-      emission: "20K0F3E"
-    mode:
-      type: "FM"
-
 assignments:
   # ── GMRS ──
   - id: asg_chio_all
@@ -408,38 +350,6 @@ assignments:
     usage: "simplex"
     service: "murs"
     notes: "MURS 1 (151.820, narrowband)."
-  # ── MURS untoned (names deliberately stay "MURS n") ──
-  - id: asg_chio_murs1_open
-    rf_chain_id: chain_chio_murs1_open
-    channel_name: "MURS 1"
-    usage: "simplex"
-    service: "murs"
-    notes: "Untoned carrier squelch. Open Part 95J channel - do not add a tone."
-  - id: asg_chio_murs2_open
-    rf_chain_id: chain_chio_murs2_open
-    channel_name: "MURS 2"
-    usage: "simplex"
-    service: "murs"
-    notes: "Untoned carrier squelch. Open Part 95J channel - do not add a tone."
-  - id: asg_chio_murs3_open
-    rf_chain_id: chain_chio_murs3_open
-    channel_name: "MURS 3"
-    usage: "simplex"
-    service: "murs"
-    notes: "Untoned carrier squelch. Open Part 95J channel - do not add a tone."
-  - id: asg_chio_murs4_open
-    rf_chain_id: chain_chio_murs4_open
-    channel_name: "MURS 4"
-    usage: "simplex"
-    service: "murs"
-    notes: "Untoned carrier squelch. Open Part 95J channel - do not add a tone."
-  - id: asg_chio_murs5_open
-    rf_chain_id: chain_chio_murs5_open
-    channel_name: "MURS 5"
-    usage: "simplex"
-    service: "murs"
-    notes: "Untoned carrier squelch. Open Part 95J channel - do not add a tone."
-
 comments:
   - text: |
       SHARED overlay for the Chicago Offline community net.
@@ -452,11 +362,9 @@ comments:
       convention. ChiO REPEATER keeps DCS 023 to match its existing on-air
       configuration.
 
-      MURS appears twice on purpose. "ChiO MURS 1-5" carry DCS 023 for
-      group traffic; "MURS 1-5" are the same frequencies with NO tone
-      (carrier squelch) so any MURS radio can monitor and join. The tone
-      configuration is the only difference, which is why the names must
-      stay distinct.
+      "ChiO VHF 1-5" carry DCS 023 for group traffic. Profiles that also
+      need untoned MURS channels use the canonical assignments from
+      SSRF-Lite's U.S. MURS plan rather than duplicating them here.
 
       DCS polarity is normal (N) on every toned channel, stated
       explicitly rather than left to the schema default. The polarity

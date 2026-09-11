@@ -4,8 +4,8 @@ Shared SSRF-Lite overlay for the **Chicago Offline** community nets.
 
 This repository holds real, on-air RF facts for channels the Chicago Offline
 group uses in common: GMRS simplex/repeater channels, amateur DMR simplex
-channels, and toned and untoned MURS sets. It is the overlay a ChiOff member
-merges on top of
+channels, and toned ChiOff VHF channels on MURS frequencies. It is the overlay
+a ChiOff member merges on top of
 [`Chicago-Offline/ssrf-lite`](https://github.com/Chicago-Offline/ssrf-lite)
 to get the community channels in their codeplug.
 
@@ -62,8 +62,6 @@ plan with DMR color code 1 and timeslot 1.
 
 ### MURS
 
-MURS is listed **twice on purpose**, and the two sets are not interchangeable.
-
 | Channel | Freq (MHz) | Tone |
 |---|---|---|
 | ChiO VHF 1 | 154.600 | DCS 023 |
@@ -71,18 +69,14 @@ MURS is listed **twice on purpose**, and the two sets are not interchangeable.
 | ChiO VHF 3 | 151.940 | DCS 023 |
 | ChiO VHF 4 | 151.880 | DCS 023 |
 | ChiO VHF 5 | 151.820 | DCS 023 |
-| MURS 1–3 | 151.820 / 151.880 / 151.940 | **none** (carrier squelch) |
-| MURS 4–5 | 154.570 / 154.600 | **none** (carrier squelch) |
 
 The `ChiO VHF n` channels carry DCS 023 for group traffic and match the
 frequency order of the private family VHF channels. They put the wideband 154
-MHz pair first, followed by the narrowband 151 MHz channels. The plain `MURS n`
-channels are the published Part 95J bandplan frequencies with **no tone**,
-deliberately left open so any MURS radio can monitor and join.
+MHz pair first, followed by the narrowband 151 MHz channels.
 
-Same frequencies; the tone configuration is the entire difference. That is
-why the names stay distinct — and why the untoned set must never have a tone
-added to it.
+Untoned MURS channels are not duplicated in this overlay. Profiles that need
+them reference SSRF-Lite's canonical `asgn_murs_1` through `asgn_murs_5`
+assignments.
 
 The 154 MHz channels use `20K0F3E` (wide), which Part 95J permits there; the
 151 MHz channels are narrow `11K2F3E`.
