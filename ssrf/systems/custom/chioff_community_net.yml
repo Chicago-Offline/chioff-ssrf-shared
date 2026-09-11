@@ -375,40 +375,39 @@ assignments:
     channel_name: "DMR UHF 446.100"
     usage: "digital-simplex"
     service: "amateur"
-  # ── MURS toned, displayed as "Fam VHF n" ──
-  # 2026-09-10: renamed + reversed vs. the underlying MURS channel number so
-  # the wideband 154 MHz pair (MURS 5/4) sits first in the list. Position
-  # only -- ids (asg_chio_murs*) are unchanged so profiles don't need new refs.
+  # ── ChiOff VHF (toned MURS), reversed for wideband priority ──
+  # These match the private family VHF frequency order without exposing the
+  # private channel names. IDs remain stable for downstream profiles.
   - id: asg_chio_murs5
     rf_chain_id: chain_chio_murs5
-    channel_name: "Fam VHF 1"
+    channel_name: "ChiO VHF 1"
     usage: "simplex"
     service: "murs"
-    notes: "MURS 5 (154.600, wideband). Was \"ChiO MURS 5\"."
+    notes: "MURS 5 (154.600, wideband)."
   - id: asg_chio_murs4
     rf_chain_id: chain_chio_murs4
-    channel_name: "Fam VHF 2"
+    channel_name: "ChiO VHF 2"
     usage: "simplex"
     service: "murs"
-    notes: "MURS 4 (154.570, wideband). Was \"ChiO MURS 4\"."
+    notes: "MURS 4 (154.570, wideband)."
   - id: asg_chio_murs3
     rf_chain_id: chain_chio_murs3
-    channel_name: "Fam VHF 3"
+    channel_name: "ChiO VHF 3"
     usage: "simplex"
     service: "murs"
-    notes: "MURS 3 (151.940, narrowband). Was \"ChiO MURS 3\"."
+    notes: "MURS 3 (151.940, narrowband)."
   - id: asg_chio_murs2
     rf_chain_id: chain_chio_murs2
-    channel_name: "Fam VHF 4"
+    channel_name: "ChiO VHF 4"
     usage: "simplex"
     service: "murs"
-    notes: "MURS 2 (151.880, narrowband). Was \"ChiO MURS 2\"."
+    notes: "MURS 2 (151.880, narrowband)."
   - id: asg_chio_murs1
     rf_chain_id: chain_chio_murs1
-    channel_name: "Fam VHF 5"
+    channel_name: "ChiO VHF 5"
     usage: "simplex"
     service: "murs"
-    notes: "MURS 1 (151.820, narrowband). Was \"ChiO MURS 1\"."
+    notes: "MURS 1 (151.820, narrowband)."
   # ── MURS untoned (names deliberately stay "MURS n") ──
   - id: asg_chio_murs1_open
     rf_chain_id: chain_chio_murs1_open

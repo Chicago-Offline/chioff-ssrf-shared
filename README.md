@@ -66,18 +66,19 @@ MURS is listed **twice on purpose**, and the two sets are not interchangeable.
 
 | Channel | Freq (MHz) | Tone |
 |---|---|---|
-| Fam VHF 1 | 154.600 | DCS 023 |
-| Fam VHF 2 | 154.570 | DCS 023 |
-| Fam VHF 3 | 151.940 | DCS 023 |
-| Fam VHF 4 | 151.880 | DCS 023 |
-| Fam VHF 5 | 151.820 | DCS 023 |
+| ChiO VHF 1 | 154.600 | DCS 023 |
+| ChiO VHF 2 | 154.570 | DCS 023 |
+| ChiO VHF 3 | 151.940 | DCS 023 |
+| ChiO VHF 4 | 151.880 | DCS 023 |
+| ChiO VHF 5 | 151.820 | DCS 023 |
 | MURS 1–3 | 151.820 / 151.880 / 151.940 | **none** (carrier squelch) |
 | MURS 4–5 | 154.570 / 154.600 | **none** (carrier squelch) |
 
-The `Fam VHF n` channels carry DCS 023 for group traffic. They are ordered with
-the wideband 154 MHz pair first, followed by the narrowband 151 MHz channels.
-The plain `MURS n` channels are the published Part 95J bandplan frequencies
-with **no tone**, deliberately left open so any MURS radio can monitor and join.
+The `ChiO VHF n` channels carry DCS 023 for group traffic and match the
+frequency order of the private family VHF channels. They put the wideband 154
+MHz pair first, followed by the narrowband 151 MHz channels. The plain `MURS n`
+channels are the published Part 95J bandplan frequencies with **no tone**,
+deliberately left open so any MURS radio can monitor and join.
 
 Same frequencies; the tone configuration is the entire difference. That is
 why the names stay distinct — and why the untoned set must never have a tone
