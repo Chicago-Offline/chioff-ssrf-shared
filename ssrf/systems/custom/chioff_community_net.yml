@@ -74,10 +74,10 @@ rf_chains:
   #     11.25 kHz; they are NOT widenable. MURS 154.570/.600 were already
   #     20K0F3E and are unchanged.
   #
-  # ⚠ chain_chio_repeater went wide with the rest. The repeater is a live
-  # machine and its actual IF bandwidth has NOT been verified -- if it is
-  # running narrow, wide input deviation will clip through it. Revert just
-  # that one chain to 11K2F3E if it sounds distorted on air.
+  # chain_chio_repeater went wide with the rest, and that is correct: the
+  # machine itself is confirmed set to wide (Eric, 2026-09-14). 20K0F3E here
+  # matches it. If the repeater is ever reconfigured to narrow, this chain
+  # has to follow it back to 11K2F3E or input deviation will clip.
   #
   # ⚠ FRS is capped at 12.5 kHz on every channel (Part 95B). Anyone on a
   # bubble-pack FRS radio will hear these as over-deviated/distorted, and
