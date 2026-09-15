@@ -59,6 +59,30 @@ antennas:
     name: "ChiOff amateur handheld/mobile"
 
 rf_chains:
+  # Bandwidth (changed 2026-09-14, was 11K2F3E on the six GMRS chains):
+  #   - GMRS 462/467 MHz MAIN channels -> 20K0F3E (wide).
+  #     47 CFR 95.1773(a): "The authorized bandwidth is 20 kHz for GMRS
+  #     transmitters operating on any of the 462 MHz main channels ... or
+  #     any of the 467 MHz main channels." Every ChiO GMRS frequency below
+  #     (462.550/.575/.600/.625/.650/.675, 467.550) is a main channel per
+  #     95.1763 -- none are interstitial, so none are capped at 12.5 kHz.
+  #     This matches the private FAM set, which has been resolving to 25 kHz
+  #     all along (though it gets there via an explicit bandwidth_khz: 25
+  #     override that contradicts its own 11K2F3E designator -- do it here
+  #     with the designator instead, so emission and bandwidth agree).
+  #   - MURS 151.820/.880/.940 stay 11K2F3E. Part 95J caps those at
+  #     11.25 kHz; they are NOT widenable. MURS 154.570/.600 were already
+  #     20K0F3E and are unchanged.
+  #
+  # ⚠ chain_chio_repeater went wide with the rest. The repeater is a live
+  # machine and its actual IF bandwidth has NOT been verified -- if it is
+  # running narrow, wide input deviation will clip through it. Revert just
+  # that one chain to 11K2F3E if it sounds distorted on air.
+  #
+  # ⚠ FRS is capped at 12.5 kHz on every channel (Part 95B). Anyone on a
+  # bubble-pack FRS radio will hear these as over-deviated/distorted, and
+  # will sound quiet coming back. Fine for a GMRS-licensed net; revisit if
+  # murs_frs_only-tier members are expected on the GMRS channels.
   # ── GMRS simplex (DCS 023) ──────────────────────────────────────────
   # ChiO ALL — GMRS 16 simplex, primary all-hands.
   - id: chain_chio_all
@@ -68,7 +92,7 @@ rf_chains:
       freq_mhz: 462.575
     tx:
       freq_mhz: 462.575
-      emission: "11K2F3E"
+      emission: "20K0F3E"
     mode:
       type: "FM"
       dcs_tx_code: "023"
@@ -83,7 +107,7 @@ rf_chains:
       freq_mhz: 462.600
     tx:
       freq_mhz: 462.600
-      emission: "11K2F3E"
+      emission: "20K0F3E"
     mode:
       type: "FM"
       dcs_tx_code: "023"
@@ -98,7 +122,7 @@ rf_chains:
       freq_mhz: 462.625
     tx:
       freq_mhz: 462.625
-      emission: "11K2F3E"
+      emission: "20K0F3E"
     mode:
       type: "FM"
       dcs_tx_code: "023"
@@ -113,7 +137,7 @@ rf_chains:
       freq_mhz: 462.650
     tx:
       freq_mhz: 462.650
-      emission: "11K2F3E"
+      emission: "20K0F3E"
     mode:
       type: "FM"
       dcs_tx_code: "023"
@@ -130,7 +154,7 @@ rf_chains:
       freq_mhz: 462.675
     tx:
       freq_mhz: 462.675
-      emission: "11K2F3E"
+      emission: "20K0F3E"
     mode:
       type: "FM"
       ctcss_tx_hz: 141.3
@@ -146,7 +170,7 @@ rf_chains:
       freq_mhz: 462.550
     tx:
       freq_mhz: 467.550
-      emission: "11K2F3E"
+      emission: "20K0F3E"
     mode:
       type: "FM"
       dcs_tx_code: "023"
