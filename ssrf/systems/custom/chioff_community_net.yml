@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/Chicago-Offline/ssrf-lite/main/ssrf/_schema/ssrf-lite-0.5.3.schema.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Chicago-Offline/ssrf-lite/main/ssrf/_schema/ssrf-lite-0.6.0.schema.json
 # SSRF-Lite (SHARED overlay): Chicago Offline community net — GMRS/MURS
 #
 # Portable community-coordination channels for the Chicago Offline group.
@@ -19,7 +19,7 @@
 #
 # All ids prefixed `chio_` so downstream generators can distinguish shared
 # community records from the official library and from personal overlays.
-$schema: "https://raw.githubusercontent.com/Chicago-Offline/ssrf-lite/main/ssrf/_schema/ssrf-lite-0.5.3.schema.json"
+$schema: "https://raw.githubusercontent.com/Chicago-Offline/ssrf-lite/main/ssrf/_schema/ssrf-lite-0.6.0.schema.json"
 ssrf_lite_version: "0.5.3"
 ssrf_lite:
   sources:
