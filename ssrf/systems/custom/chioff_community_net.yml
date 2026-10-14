@@ -157,16 +157,19 @@ rf_chains:
       ctcss_tx_hz: 141.3
       ctcss_rx_hz: 141.3
   # ChiO REPEATER — GMRS 550 pair: output 462.550, input 467.550 (+5 MHz).
-  # Radio-centric: rx = repeater output, tx = repeater input.
+  # Station-centric, per the SSRF-Lite spec: an rf_chain describes the
+  # repeater, not the handheld. tx = what the repeater radiates (its output,
+  # which the handheld receives); rx = what the repeater listens on (its
+  # input, which the handheld transmits on). Consumers flip it.
   # DCS 023 (existing repeater configuration, unchanged -- the simplex set
   # was moved to 023 to match it rather than the other way around).
   - id: chain_chio_repeater
     station_id: stn_chio_gmrs
     antenna_id: ant_chio_gmrs
     rx:
-      freq_mhz: 462.550
-    tx:
       freq_mhz: 467.550
+    tx:
+      freq_mhz: 462.550
       emission: "20K0F3E"
     mode:
       type: "FM"
